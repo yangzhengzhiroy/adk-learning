@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* style.css */
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0; /* Light background */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+      }
+
+      .chat-container {
+        width: 70%;
+        height: 90%;
+        border: 1px solid #ccc;
+        border-radius: 12px; /* Slightly larger radius for a softer look */
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for 3D effect */
+        background-color: #fff; /* White chat background */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        transform: perspective(800px) rotateX(0deg); /* slight tilt for 3D */
+        transform-style: preserve-3d; /* enable 3d transforms */
+      }
+
+      .chat-input {
+        display: flex;
+        padding: 15px;
+        border-top: 1px solid #ccc; /* Move the border to the top */
+        transition: border-color 0.3s ease;
+      }
+
+      .chat-input input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+
+      .chat-input button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .chat-body {
+        flex-grow: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+      }
+
+      .user-message {
+        background-color: #eee;
+        color: #333;
+        padding: 8px 12px;
+        border-radius: 8px;
+        align-self: flex-end;
+        max-width: 70%;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .agent-message {
+        background-color: #e0f2fe;
+        color: #333;
+        padding: 8px 12px;
+        border-radius: 8px;
+        align-self: flex-start;
+        max-width: 70%;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .agent-message.awaiting-response {
+        background-color: #d1e0e8;
+        animation: blinker 1s linear infinite;
+      }
+      @keyframes blinker {
+        50% {
+          opacity: 0.5;
+        }
+      }
+    </style>
+
+    <title>Interactive Text Chat</title>
+  </head>
+  <body>
+    <div class="chat-container" id="chat-container">
+      <div class="chat-body" id="chat-body"></div>
+
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Ask anything" />
+        <button id="send-button">▶</button>
+      </div>
+    </div>
+  </body>
+
+  <script src="static/script_text.js"></script>
+</html>

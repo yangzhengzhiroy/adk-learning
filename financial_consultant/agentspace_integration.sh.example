@@ -1,0 +1,27 @@
+# /bin/bash
+export PROJECT_ID="<your-project-id>"
+export PROJECT_NUMBER="<your-project-number>"
+export REASONING_ENGINE="<agent-engine-id>"
+export AGENT_DISPLAY_NAME="<agent-name>"
+export AGENT_DESCRIPTION="<agent-desc>"
+export AGENT_ID="<agent-id>"
+export AS_APP="<agentspace-app-id>"
+
+curl -X PATCH -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+-H "Content-Type: application/json" \
+-H "x-goog-user-project: ${PROJECT_ID}" \
+https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/collections/default_collection/engines/${AS_APP}/assistants/default_assistant?updateMask=agent_configs -d '{
+    "name": "projects/${PROJECT_NUMBER}/locations/global/collections/default_collection/engines/${AS_APP}/assistants/default_assistant",
+    "displayName": "Default Assistant",
+    "agentConfigs": [{
+      "displayName": "'"${AGENT_DISPLAY_NAME}"'",
+      "vertexAiSdkAgentConnectionInfo": {
+        "reasoningEngine": "'"${REASONING_ENGINE}"'"
+      },
+      "toolDescription": "'"${AGENT_DESCRIPTION}"'",
+      "icon": {
+        "uri": "<any-icon-uri>"
+      },
+      "id": "'"${AGENT_ID}"'"
+    }]
+  }'

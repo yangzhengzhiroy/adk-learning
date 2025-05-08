@@ -1,5 +1,5 @@
 # Python-generated files
-__pycache__/
+**/__pycache__/
 *.py[oc]
 build/
 dist/
@@ -11,3 +11,9 @@ wheels/
 
 # env file
 .env
+
+# shell script
+**/*.sh
+
+# media files
+**/*.webm

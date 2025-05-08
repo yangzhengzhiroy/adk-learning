@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interactive Audio Chat</title>
+    <style>
+      #chat-container {
+        width: 500px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+
+      #chat-log {
+        height: 300px;
+        overflow-y: scroll;
+        border: 1px solid #eee;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+      .message {
+        margin-bottom: 5px;
+      }
+
+      .user-message {
+        text-align: right;
+        color: blue;
+      }
+
+      .server-message {
+        text-align: left;
+        color: green;
+      }
+
+      #controls {
+        text-align: center;
+      }
+
+      #record-button {
+        padding: 10px 20px;
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      #stop-button {
+        padding: 10px 20px;
+        background-color: #f44336; /* Red */
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chat-container">
+      <h1>Interactive Chat</h1>
+      <div id="chat-log"></div>
+      <div id="controls">
+        <button id="record-button">Record</button>
+        <button id="stop-button" disabled>Stop</button>
+      </div>
+    </div>
+    <script src="static/script_audio.js"></script>
+  </body>
+</html>
